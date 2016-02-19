@@ -1,0 +1,96 @@
+---
+layout: default
+title: less教材
+category: less
+published: true
+comment: false
+---
+<!--
+  ~ Copyright (c) 2016. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
+<h1>
+    {{ page.title }}
+</h1>
+        <h3>
+            1.定义并引用变量
+        </h3>
+        <pre>
+            @color:#111;
+            #orange{
+                background-color:@color;
+            }
+        </pre>
+        编译后
+        <pre>
+            #orange{
+                background-color:#111;
+            }
+        </pre>
+        <hr/>
+        <h3>
+            2.变量运算
+        </h3>
+        <pre>
+            @color:#111;
+            #orange{
+                background-color:@color+111;
+            }
+        </pre>
+        编译后
+        <pre>
+            @color:#111;
+            #orange{
+                background-color:#222;
+            }
+        </pre>
+        <hr/>
+        <h3>
+            3.引用
+        </h3>
+        <pre>
+            .rounded-corners (@radius: 5px) {
+                -webkit-border-radius: @radius;
+                -moz-border-radius: @radius;
+                -ms-border-radius: @radius;
+                -o-border-radius: @radius;
+                border-radius: @radius;
+            }
+            #header {
+                .rounded-corners;
+            }
+            #footer {
+                .rounded-corners(10px);
+            }
+        </pre>
+        编译后
+        <pre>
+            #header {
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
+                border-radius: 5px;
+            }
+            #footer {
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                -ms-border-radius: 10px;
+                -o-border-radius: 10px;
+                border-radius: 10px;
+            }
+        </pre>
+        <hr/>
+        <h3>
+            4.页面引用
+        </h3>
+        <pre>
+            &lt;link rel="stylesheet/less" href="example.less" /&gt;
+            &lt;script src="https://cdn.bootcss.com/less.js/2.6.0/less.js"&gt; &lt;/script&gt;
+        </pre>
+        <div class="alert alert-warning" role="alert"><small>注意文件顺序</small></div>
+<p>{{ page.date | date_to_string }}</p>

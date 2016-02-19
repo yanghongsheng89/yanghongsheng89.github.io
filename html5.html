@@ -1,0 +1,26 @@
+---
+layout: default
+title: html5专题
+keyword: html5,html5新特性
+description: 学习了解html5
+comment: false
+---
+{% assign news = (site.posts | where:"category","html5") %}
+　　<!--
+  ~ Copyright (c) 2016. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
+<div class="page-header">
+  <h1>{{ page.title }}<small>最新文章</small></h1>
+</div>
+<div class="list-group">
+  　　　　{% for post in news %}
+  <a href="{{ site.baseurl }}{{ post.url }}" class="list-group-item">
+    <h4 class="list-group-item-heading">{{ post.title }}</h4>
+  </a>
+  　　　　{% endfor %}
+  　</div>

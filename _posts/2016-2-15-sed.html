@@ -1,0 +1,19 @@
+---
+layout: default
+title: sed使用方法
+keyword: shell,sed,sed使用
+description: 学习使用sed
+category: shell
+comment: false
+---
+<div class="page-header">
+    <h1>{{ page.title }}</h1>
+</div>
+<pre>
+    #!/bin/bash
+    sed -i 's/QQ/WW/g' text.txt     ##替换text.txt文件中所有QQ为WW
+    old_name="jack"
+    new_name="tom"
+    sed -i "s/$old_name/$new_name/g" text.txt ##变量替换
+</pre>
+<p>{{ page.date | date_to_string }}</p>

@@ -1,0 +1,50 @@
+---
+layout: default
+title: java反射
+category: java
+comment: false
+---
+<h1>
+    {{ page.title }}
+</h1>
+        <pre>
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
+/**
+ *
+ * @author YANGGONGSHENG
+ * @since @since web-0.0.1-SNAPSHOT
+ */
+@SuppressWarnings("unused")
+public class ConnectionFacotry implements Factory<Connection>{
+
+            Properties properties;
+
+            @Override
+            public Connection get() throws SQLException {
+            init();
+            return DriverManager.getConnection("jdbc:mysql:///cja",properties);
+            }
+
+            @Override
+            public void init() throws FactoryException{
+            try {
+            Class.forName("com.mysql.jdbc.Driver");
+            properties =new Properties();
+            properties.put("user","root");
+            properties.put("password","");
+            } catch (ClassNotFoundException e) {
+            }
+            }
+
+            @Override
+            public void destroy() {
+
+            }
+    }
+
+        </pre>
+<p>{{ page.date | date_to_string }}</p>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container{
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container"><canvas id="canvas" ></canvas></div>
+    <script>
+        (function(){
+            var img=new Image();
+            img.src="img/a.jpg";
+
+            var canvas=document.getElementById("canvas");
+            //var ocanvas=document.createElement("canvas");
+            try{
+                var ctx=canvas.getContext("2d");
+            }catch(e){
+                alert("error msg");
+                return;
+            }
+            var sc;
+            var k=4;
+            img.onload=function(){
+                canvas.width=img.width/k;
+                canvas.height=img.height/k;
+
+                sc=img.width/canvas.width;
+                ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
+                canvas.addEventListener("mousemove",up,false);
+                canvas.addEventListener("mouseout",over,false);
+                canvas.addEventListener("touchmove",over,false);
+            };
+            function over(){
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.drawImage(img,0,0,canvas.width,canvas.height);
+            }
+            function up(e){
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.drawImage(img,0,0,canvas.width,canvas.height);
+                var mr=canvas.height/k;
+                ctx.save();
+                ctx.beginPath();
+                ctx.lineWidth = k;
+                ctx.strokeStyle = "#069";
+                var x=e.clientX-canvas.offsetLeft;
+                var y=e.clientY-canvas.offsetTop;
+
+                ctx.arc(e.clientX-canvas.offsetLeft, e.clientY-canvas.offsetTop,mr,0,Math.PI*2,false);
+                ctx.stroke();
+                ctx.clip();
+                var sx=sc*x-mr>0?sc*x-mr:0;
+                var sy=sc*y-mr>0?sc*y-mr:0;
+                var dx=x-mr>0?x-mr:0;
+                var dy=y-mr>0?y-mr:0;
+                ctx.drawImage(img, sx, sy,2*mr,2*mr,dx, dy,2*mr,2*mr);
+                ctx.restore();
+            }
+        })();
+    </script>
+</body>
+</html>

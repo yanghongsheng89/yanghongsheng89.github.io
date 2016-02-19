@@ -1,0 +1,57 @@
+---
+layout: default
+title: camera
+category: html5
+comment: false
+---
+<video id="video" autoplay="autoplay" width="640px" height="480px"></video><br/><input id="btn" type="button" value="拍照">
+<canvas id="can" style="display: none" width="640px" height="480px"></canvas>
+<div style="width: 640px;display: none">
+    <div class="thumbnail">
+        <img src="" alt="pic" id="pic">
+    </div>
+</div>
+<script type="application/javascript">
+    var video = document.getElementById("video");
+    (function () {
+        navigator.webkitGetUserMedia({"video": "true"}, function (stream) {
+            video.src=window.webkitURL.createObjectURL(stream);
+        }, function (e) {
+            alert(e);
+        })
+        document.getElementById("btn").onclick=function(){
+            var can = document.getElementById("can");
+            //can.style.display="none";
+            var ctx = can.getContext("2d");
+            ctx.drawImage(video,0,0,640,480);
+            var data = can.toDataURL("image/png")
+            var pic = document.getElementById("pic");
+            pic.parentNode.parentNode.style.display="block";
+            document.getElementById("pic").src=data
+        }
+    })();
+
+</script>
+<pre>
+&lt;video id="video" autoplay="autoplay"&gt;&lt;/video&gt;&lt;br/&gt;&lt;input id="btn" type="button" value="拍照"&gt;
+&lt;canvas id="can"&gt;&lt;/canvas&gt;
+&lt;script type="application/javascript"&gt;
+    var video = document.getElementById("video");
+    (function () {
+        navigator.webkitGetUserMedia({"video": "true"}, function (stream) {
+            video.src=window.webkitURL.createObjectURL(stream);
+        }, function (e) {
+            alert(e);
+        })
+        document.getElementById("btn").onclick=function(){
+            var can = document.getElementById("can");
+            can.style.display="none";
+            var ctx = can.getContext("2d");
+            ctx.drawImage(video,0,0,640,480);
+            var data = can.toDataURL("image/png")
+            document.getElementsByName("message")[0].innerHTML=data;
+        }
+    })();
+
+&lt;/script&gt;
+</pre>
