@@ -8,14 +8,12 @@ var _hmt = _hmt || [];
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
 })();
-<script>
 (function(){
     var bp = document.createElement('script');
     bp.src = '//push.zhanzhang.baidu.com/push.js';
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
 })();
-</script>
 $('.typeahead').typeahead({source: [{% for post in site.posts %}{{ post.title | jsonify }},{% endfor %}""]});
 $("#search").click(function(){
     var obj={
