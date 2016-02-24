@@ -3,6 +3,14 @@ layout: null
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset>
+    <![CDATA[
+    <url>
+        <loc>http://www.yoursite.com/yoursite.html</loc>
+        <lastmod>2009-12-14</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+]]]>
     {% for post in site.posts limit:10 %}
     <url>
         <loc>{{ post.url | prepend: site.baseurl | prepend: site.url }}</loc>
