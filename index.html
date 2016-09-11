@@ -20,13 +20,13 @@ paginate_path: "/page:num"
 {% if paginator.total_pages > 1 %}
 <ul class="pager">
     {% if paginator.previous_page %}
-    <li class="previous"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">上一页</a></li>
+    <li class="previous"><a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">上一页</a></li>
     {% else %}
     <li  class="previous disabled"><a href="#">上一页</a></li>
     {% endif %}
 
     {% if paginator.next_page %}
-    <li class="next"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">下一页</a></li>
+    <li class="next"><a href="{{ paginator.next_page_path | prepend: site.baseurl }}">下一页</a></li>
     {% else %}
     <li class="next disabled"><a href="#">下一页</a></li>
     {% endif %}
