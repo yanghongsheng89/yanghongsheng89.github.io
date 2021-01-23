@@ -15,7 +15,7 @@ comment: false
     var video = document.getElementById("video");
     (function () {
         navigator.getUserMedia({"video": "true"}, function (stream) {
-            video.src=window.webkitURL.createObjectURL(stream);
+            video.srcObject=stream;
         }, function (e) {
             alert(e);
         })
